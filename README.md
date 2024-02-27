@@ -1,6 +1,7 @@
-# My Awesome Project
+# SysML to AAS Mapping Project
 
-Welcome to my awesome project! This repository contains an EMF tree-based editor for modeling AAS (Asset Administration Shell) models conforming to the `aas.ecore`.
+This repository contains the supporting software for the SysML to AAS Mapping Project.
+Currently, it contains an EMF tree-based editor for modeling AAS (Asset Administration Shell) models conforming to the `aas.ecore`.
 
 ## Getting Started
 
