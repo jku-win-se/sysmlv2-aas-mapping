@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AAS:AasModelRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AAS="www.jku.at/AAS" name="ModellingContainer">
+  <assetadministrationshells idShort="VehicleDefinitions AAS">
+    <submodel idShort="PartDefinitions (Hierarchical Structures)">
+      <description value="The Submodel HierarchicalStructures identified by its semanticId. The Submodel idShort can be picked freely."/>
+      <qualifier type="package" valueType="xs:string" value=""/>
+      <qualifier type="Multiplicity" valueType="xs:string" value="One"/>
+      <submodelelement xsi:type="AAS:Entity" idShort="Vehicle" entityType="SelfManagedEntity">
+        <qualifier type="part def"/>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="Transmission" entityType="SelfManagedEntity">
+        <qualifier type="part def"/>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="AxleAssembly" entityType="SelfManagedEntity">
+        <qualifier type="part def"/>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="Axle" entityType="SelfManagedEntity">
+        <qualifier type="part def"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="leftMountingPoint" kind="Instance">
+          <qualifier type="port" valueType="xs:string"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="type" name="type">
+            <first>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.3/@submodelelement.0"/>
+            </first>
+            <second>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.7"/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="rightMountingPoint" kind="Instance">
+          <qualifier type="port" valueType="xs:string"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="type" name="type">
+            <first>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.3/@submodelelement.1"/>
+            </first>
+            <second>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.7"/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="Wheel" entityType="SelfManagedEntity">
+        <qualifier type="part def"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="hub" kind="Instance">
+          <qualifier type="port" valueType="xs:string"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="type" name="type">
+            <first>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.4/@submodelelement.0"/>
+            </first>
+            <second>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.8"/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="Lugbolt" entityType="SelfManagedEntity">
+        <qualifier type="part def"/>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection">
+          <submodelelement xsi:type="AAS:Property" idShort="tighteningTorque">
+            <qualifier type="attribute"/>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="generalises" name="generalises">
+            <first>
+              <key type="Property" value="&lt;not used in Ecore, use Referable>" referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.5/@submodelelement.0/@submodelelement.0"/>
+            </first>
+            <second>
+              <key referable="//@assetadministrationshells.1/@submodel.0/@submodelelement.0"/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="DriveIF">
+        <qualifier type="port def"/>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection">
+          <qualifier type="direction" value="in"/>
+          <submodelelement xsi:type="AAS:Property" idShort="driveTorque">
+            <qualifier type="attribute"/>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="generalises" name="generalises">
+            <first>
+              <key type="Property" value="&lt;not used in Ecore, use Referable>" referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.6/@submodelelement.0/@submodelelement.0"/>
+            </first>
+            <second>
+              <key referable="//@assetadministrationshells.1/@submodel.0/@submodelelement.0"/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="AxleMountIF" entityType="SelfManagedEntity">
+        <qualifier type="port def"/>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection">
+          <qualifier type="direction" value="out"/>
+          <submodelelement xsi:type="AAS:Property" idShort="transferredTorque">
+            <qualifier type="attribute"/>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="generalises" name="generalises">
+            <first>
+              <key type="Property" value="&lt;not used in Ecore, use Referable>" referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.7/@submodelelement.0/@submodelelement.0"/>
+            </first>
+            <second>
+              <key referable="//@assetadministrationshells.1/@submodel.0/@submodelelement.0"/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="WheelHubIF" entityType="SelfManagedEntity">
+        <qualifier type="port def"/>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection">
+          <qualifier type="direction" value="in"/>
+          <submodelelement xsi:type="AAS:Property" idShort="appliedTorque">
+            <qualifier type="attribute"/>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="generalises" name="generalises">
+            <first>
+              <key type="Property" value="&lt;not used in Ecore, use Referable>" referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.8/@submodelelement.0/@submodelelement.0"/>
+            </first>
+            <second>
+              <key referable="//@assetadministrationshells.1/@submodel.0/@submodelelement.0"/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="Mounting" entityType="SelfManagedEntity">
+        <description value="doc /* The definition of the interface for mounting a Wheel to an Axle. */"/>
+        <qualifier type="interface def"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="Mounting::axleMount">
+          <qualifier type="end" value="end"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="type" name="type">
+            <first>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.9/@submodelelement.0"/>
+            </first>
+            <second>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.7"/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="Mounting::hub">
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="type" name="type">
+            <first>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.4/@submodelelement.0"/>
+            </first>
+            <second>
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.8"/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+    </submodel>
+  </assetadministrationshells>
+  <assetadministrationshells idShort="ISQ">
+    <submodel>
+      <qualifier type="attribute" valueType="xs:string" value=""/>
+      <submodelelement xsi:type="AAS:Entity" idShort="torque">
+        <submodelelement xsi:type="AAS:Entity" idShort="torque"/>
+      </submodelelement>
+    </submodel>
+  </assetadministrationshells>
+</AAS:AasModelRoot>

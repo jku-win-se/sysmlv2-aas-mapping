@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AAS:AasModelRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AAS="www.jku.at/AAS" name="vehicle">
+  <assetadministrationshells idShort="VehicleMasses">
+    <submodel idShort="part def CarPart">
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="relationships">
+        <submodelelement xsi:type="AAS:RelationshipElement" idShort="specifies" name="specifies">
+          <first name="carPart">
+            <key type="Submodel" referable="//@assetadministrationshells.0/@submodel.0"/>
+          </first>
+          <second name="MassedThing">
+            <key type="Submodel" referable="//@assetadministrationshells.1/@submodel.0"/>
+          </second>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes">
+        <submodelelement xsi:type="AAS:SubmodelElementCollection">
+          <submodelelement xsi:type="AAS:Property" idShort="serialNumber" valueType="String"/>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="part definitions">
+        <submodelelement xsi:type="AAS:Entity" idShort="part definition 001">
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="relationships">
+            <submodelelement xsi:type="AAS:RelationshipElement" idShort="type" name="CarPart :> MassedThing">
+              <first name="carPart">
+                <key type="Submodel" referable="//@assetadministrationshells.0/@submodel.0"/>
+              </first>
+              <second name="MassedThing">
+                <key type="Submodel" referable="//@assetadministrationshells.1/@submodel.0"/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes">
+            <submodelelement xsi:type="AAS:Property" idShort="an attribute name" valueType=""/>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="part definitions"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="part definition 002">
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="relationships"/>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes"/>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="part definitions"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="part definition 003">
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="relationships"/>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes"/>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="part definitions"/>
+        </submodelelement>
+      </submodelelement>
+    </submodel>
+    <submodel idShort="part car" kind="Instance">
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="relationships" kind="Instance">
+        <submodelelement xsi:type="AAS:RelationshipElement" name="type">
+          <first name="car">
+            <key type="Submodel" referable="//@assetadministrationshells.0/@submodel.0"/>
+          </first>
+          <second name="CarPart">
+            <key/>
+          </second>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:RelationshipElement" name="specifies">
+          <first name="car: CarPart">
+            <key type="Submodel" referable="//@assetadministrationshells.0/@submodel.1"/>
+          </first>
+          <second name="compositeThing">
+            <key type="Submodel" referable="//@assetadministrationshells.1/@submodel.1"/>
+          </second>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes" kind="Instance">
+        <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="vin redefines serialNumber;">
+          <submodelelement xsi:type="AAS:Property" idShort="vin" value=""/>
+          <submodelelement xsi:type="AAS:RelationshipElement" idShort="redefines" name="redefines">
+            <first name="vin">
+              <key/>
+            </first>
+            <second name="serialNumber">
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="parts" kind="Instance">
+        <submodelelement xsi:type="AAS:Entity" idShort="carParts" kind="Instance">
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="relationships" kind="Instance">
+            <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="type">
+              <submodelelement xsi:type="AAS:RelationshipElement" kind="Instance" name="car: CartPart">
+                <submodelelement xsi:type="AAS:Property" idShort="[*]" kind="Instance" valueType="String" value="[*]"/>
+                <first name="carParts">
+                  <key type="Entity" referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+                </first>
+                <second name="CarPart">
+                  <key type="Submodel" referable="//@assetadministrationshells.0/@submodel.0"/>
+                </second>
+              </submodelelement>
+            </submodelelement>
+            <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="redefines" kind="Instance">
+              <submodelelement xsi:type="AAS:RelationshipElement" name="carParts: CarPart[*] redefines subcomponents">
+                <first name="carParts">
+                  <key type="Entity" referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+                </first>
+                <second name="subcomponents">
+                  <key type="Entity" referable="//@assetadministrationshells.1/@submodel.1/@submodelelement.3/@submodelelement.0"/>
+                </second>
+              </submodelelement>
+            </submodelelement>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes" kind="Instance"/>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="parts" kind="Instance"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="engine" kind="Instance">
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="relationships" kind="Instance">
+            <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="type">
+              <submodelelement xsi:type="AAS:RelationshipElement" kind="Instance" name="">
+                <submodelelement xsi:type="AAS:Property" idShort="" kind="Instance" valueType="String" value=""/>
+                <first name="">
+                  <key referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+                </first>
+                <second name="">
+                  <key/>
+                </second>
+              </submodelelement>
+            </submodelelement>
+            <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="generalization" kind="Instance">
+              <submodelelement xsi:type="AAS:RelationshipElement" kind="Instance" name="">
+                <submodelelement xsi:type="AAS:Property" idShort="" kind="Instance" valueType="String" value=""/>
+                <first name="">
+                  <key referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+                </first>
+                <second name="">
+                  <key/>
+                </second>
+              </submodelelement>
+            </submodelelement>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes" kind="Instance"/>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="parts" kind="Instance"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="transmission" kind="Instance">
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="relationships" kind="Instance">
+            <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="type">
+              <submodelelement xsi:type="AAS:RelationshipElement" kind="Instance" name="">
+                <submodelelement xsi:type="AAS:Property" idShort="" kind="Instance" valueType="String" value=""/>
+                <first name="">
+                  <key referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+                </first>
+                <second name="">
+                  <key/>
+                </second>
+              </submodelelement>
+            </submodelelement>
+            <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="generalization" kind="Instance">
+              <submodelelement xsi:type="AAS:RelationshipElement" kind="Instance" name="">
+                <submodelelement xsi:type="AAS:Property" idShort="" kind="Instance" valueType="String" value=""/>
+                <first name="">
+                  <key referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+                </first>
+                <second name="">
+                  <key/>
+                </second>
+              </submodelelement>
+            </submodelelement>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes" kind="Instance"/>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="parts" kind="Instance"/>
+        </submodelelement>
+      </submodelelement>
+    </submodel>
+    <submodel/>
+  </assetadministrationshells>
+  <assetadministrationshells idShort="MassRollup">
+    <submodel idShort="part def MassedThing"/>
+    <submodel idShort="part compositeThing">
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="type">
+        <submodelelement xsi:type="AAS:RelationshipElement" kind="Instance" name="">
+          <submodelelement xsi:type="AAS:Property" idShort="" kind="Instance" valueType="String" value=""/>
+          <first name="">
+            <key referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+          </first>
+          <second name="">
+            <key/>
+          </second>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="generalization" kind="Instance">
+        <submodelelement xsi:type="AAS:RelationshipElement" kind="Instance" name="">
+          <submodelelement xsi:type="AAS:Property" idShort="" kind="Instance" valueType="String" value=""/>
+          <first name="">
+            <key referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+          </first>
+          <second name="">
+            <key/>
+          </second>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes" kind="Instance"/>
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="parts" kind="Instance">
+        <submodelelement xsi:type="AAS:Entity" idShort="subcomponents"/>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="EXAMPLE-FOR-COPY-PASTE">
+        <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="type">
+          <submodelelement xsi:type="AAS:RelationshipElement" kind="Instance" name="">
+            <submodelelement xsi:type="AAS:Property" idShort="" kind="Instance" valueType="String" value=""/>
+            <first name="">
+              <key referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+            </first>
+            <second name="">
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="generalization" kind="Instance">
+          <submodelelement xsi:type="AAS:RelationshipElement" kind="Instance" name="">
+            <submodelelement xsi:type="AAS:Property" idShort="" kind="Instance" valueType="String" value=""/>
+            <first name="">
+              <key referable="//@assetadministrationshells.0/@submodel.1/@submodelelement.2/@submodelelement.0"/>
+            </first>
+            <second name="">
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="attributes" kind="Instance"/>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="parts" kind="Instance"/>
+      </submodelelement>
+    </submodel>
+  </assetadministrationshells>
+  <assetadministrationshells idShort="ScalarValues"/>
+</AAS:AasModelRoot>

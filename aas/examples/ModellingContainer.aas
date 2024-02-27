@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AAS:AasModelRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AAS="www.jku.at/AAS" name="ModellingContainer">
+  <assetadministrationshells idShort="ModellingContainer">
+    <submodel idShort="HierarchicalStructures">
+      <description value="The Submodel HierarchicalStructures identified by its semanticId. The Submodel idShort can be picked freely."/>
+      <qualifier type="Multiplicity" valueType="xs:string" value="One"/>
+      <submodelelement xsi:type="AAS:Entity" idShort="EntryNode">
+        <qualifier type="Multiplicity" valueType="xs:string" value="One"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="Node">
+          <qualifier type="Multiplicity" valueType="xs:string" value="OneToMany"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:RelationshipElement" idShort="sameAs">
+          <first>
+            <key type="Entity" value="&lt;not used in Ecore, use Referable>" referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.0/@submodelelement.0"/>
+          </first>
+          <second>
+            <key/>
+          </second>
+        </submodelelement>
+      </submodelelement>
+    </submodel>
+  </assetadministrationshells>
+</AAS:AasModelRoot>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/aas/src" modelPluginID="aas" modelName="Aas" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    operationReflection="true" runtimePlatform="RCP" importOrganizing="true">
+  <foreignModel>aas.ecore</foreignModel>
+  <genPackages prefix="AAS" disposableProviderFactory="true" ecorePackage="aas.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//IdentifierType">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdentifierType/Custom"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdentifierType/IRDI"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdentifierType/IRI"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//LangEnum">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/en"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/ar"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/cs"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/da"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/de"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/es"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/fr"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/hi"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/id"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/it"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/ja"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/ko"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/ml"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/nl"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/no"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/pl"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/pt"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/ro"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/ru"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/sr"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/sv"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/th"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/tr"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LangEnum/zh"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//KeyElements">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/GlobalReference"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/FragmentReference"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/AccessPermissionRule"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/AnnotatedRelationshipElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/BasicEvent"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/Blob"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/Capability"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/ConceptDictionary"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/DataElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/File"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/Entity"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/Event"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/MultiLanguageProperty"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/Operation"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/Property"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/Range"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/ReferenceElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/RelationshipElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/SubmodelElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/SubmodelElementCollection"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/View"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/ConceptDescription"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/Asset"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/AssetAdministrationShell"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyElements/Submodel"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//ReferableElements">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/AccessPermissionRule"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/AnnotatedRelationshipElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/BasicEvent"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/Blob"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/Capability"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/ConceptDictionary"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/DataElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/File"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/Entity"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/Event"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/MultiLanguageProperty"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/Operation"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/Property"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/Range"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/ReferenceElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/RelationshipElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/SubmodelElement"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/SubmodelElementCollection"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/View"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ReferableElements/ConceptDescription"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//IdentifiableElement">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdentifiableElement/Asset"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdentifiableElement/AssetAdministrationShell"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdentifiableElement/ConceptDescription"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdentifiableElement/Submodel"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//KeyType">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyType/Custom"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyType/IRDI"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyType/IRI"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyType/IdShort"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//KeyType/FragmentId"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//LocalKeyType">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LocalKeyType/IdShort"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LocalKeyType/FragmentId"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//ModelingKind">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ModelingKind/Template"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ModelingKind/Instance"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//ProtocolKind">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ProtocolKind/HTTP"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ProtocolKind/MQTT"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ProtocolKind/OPCUA"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ProtocolKind/CoAP"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//ProtocolKind/OTHER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//IdType">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdType/Integer"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdType/Long"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdType/ByteArray"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//IdType/UUID"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//AssetKind">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//AssetKind/Type"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//AssetKind/Instance"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//MimeType"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//EntityType">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//EntityType/SelfManagedEntity"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//EntityType/CoManagedEntity"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//LevelType">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LevelType/Min"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LevelType/Max"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LevelType/Nom"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//LevelType/Typ"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//DataTypeIEC61360">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/STRING_TRANSLATABLE"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/INTEGER_MEASURE"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/INTEGER_COUNT"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/INTEGER_CURRENCY"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/REAL_MEASURE"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/REAL_COUNT"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/REAL_CURRENCY"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/URL"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/RATIONAL"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/RATIONAL_MEASURE"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeIEC61360/TIMESTAMP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="aas.ecore#//DataTypeDefXsd">
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/string"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/anyURI"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/base64Binary"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/byte"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/date"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/dateTime"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/decimal"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/double"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/duration"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/gDay"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/gMonth"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/gMonthDay"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/gYear"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/gYearMonth"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/float"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/hexBinary"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/int"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/integer"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/long"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/negativeInteger"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/nonNegativeInteger"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/nonPositiveInteger"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/positiveInteger"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/short"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/time"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/unsignedByte"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/unsigendInt"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/unsignedLong"/>
+      <genEnumLiterals ecoreEnumLiteral="aas.ecore#//DataTypeDefXsd/unsignedShort"/>
+    </genEnums>
+    <genClasses ecoreClass="aas.ecore#//AssetAdministrationShell">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//AssetAdministrationShell/derivedFrom"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//AssetAdministrationShell/security"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//AssetAdministrationShell/assetInformation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//AssetAdministrationShell/asset"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//AssetAdministrationShell/submodel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//AssetAdministrationShell/endpoint"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//Identifiable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Identifiable/administration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Identifiable/identification"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//Referable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Referable/idShort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Referable/category"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Referable/description"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//LangString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//LangString/lang"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//LangString/value"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//AdministrativeInformation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AdministrativeInformation/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AdministrativeInformation/revision"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AdministrativeInformation/creator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AdministrativeInformation/templateId"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Identifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Identifier/idType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Identifier/id"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//HasDataSpecification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//HasDataSpecification/dataSpecification"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Reference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Reference/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Reference/name"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Key">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Key/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Key/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Key/idType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//Key/referable"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Security">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Security/accessControlPolicyPoints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Security/certificate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Security/requiredCertificateExtension"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//AccessControlPolicyPoints">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//AccessControlPolicyPoints/localAccessControl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AccessControlPolicyPoints/externalAccessControl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AccessControlPolicyPoints/externalInformationPoints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//AccessControlPolicyPoints/internalInformationPoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AccessControlPolicyPoints/externalPolicyDecisionPoints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AccessControlPolicyPoints/externalPolicyEnforcementPoint"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//AccessControl"/>
+    <genClasses ecoreClass="aas.ecore#//Submodel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Submodel/submodelelement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//HasKind">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//HasKind/kind"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//HasSemantics">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//HasSemantics/semanticId"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//SubmodelElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//SubmodelElement/isDynamic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//SubmodelElement/endPoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//SubmodelElement/nodeId"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Endpoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Endpoint/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Endpoint/protocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Endpoint/name"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//NodeId">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//NodeId/namespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//NodeId/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//NodeId/idType"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Certificate"/>
+    <genClasses ecoreClass="aas.ecore#//AssetInformation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AssetInformation/assetKind"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//AssetInformation/globalAssetId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//AssetInformation/specificAssetId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//AssetInformation/billOfMaterial"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//AssetInformation/defaultThumbnail"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//IdentifierKeyValuePair">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//IdentifierKeyValuePair/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//IdentifierKeyValuePair/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//IdentifierKeyValuePair/externalSubjectId"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//File">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//File/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//File/mimeType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//DataElement"/>
+    <genClasses ecoreClass="aas.ecore#//Asset">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Asset/kind"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Asset/endpoint"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//AASEndpoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AASEndpoint/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AASEndpoint/port"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Entity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Entity/entityType"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//RelationshipElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//RelationshipElement/first"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//RelationshipElement/second"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//RelationshipElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Operation"/>
+    <genClasses ecoreClass="aas.ecore#//SubmodelElementCollection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//SubmodelElementCollection/ordered"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//SubmodelElementCollection/allowDuplicates"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Property/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Property/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Property/valueId"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//ReferenceElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//ReferenceElement/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//Event"/>
+    <genClasses ecoreClass="aas.ecore#//BasicEvent"/>
+    <genClasses ecoreClass="aas.ecore#//Range">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Range/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Range/max"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Capability"/>
+    <genClasses ecoreClass="aas.ecore#//ConceptDescription">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//ConceptDescription/isCaseOf"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//LangStringSet"/>
+    <genClasses image="false" ecoreClass="aas.ecore#//DataSpecificationContent"/>
+    <genClasses ecoreClass="aas.ecore#//DataSpecificationIEC61360">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//DataSpecificationIEC61360/preferredName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//DataSpecificationIEC61360/shortName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//DataSpecificationIEC61360/unit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//DataSpecificationIEC61360/unitId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//DataSpecificationIEC61360/sourceOfDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//DataSpecificationIEC61360/symbol"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//DataSpecificationIEC61360/dataType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//DataSpecificationIEC61360/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//DataSpecificationIEC61360/valueFormat"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//DataSpecificationIEC61360/valueList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//DataSpecificationIEC61360/valueId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//DataSpecificationIEC61360/levelType"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//ValueReferencePairType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//ValueReferencePairType/valueId"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//View">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//View/containedElement"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//MultiLanguageProperty">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//MultiLanguageProperty/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//MultiLanguageProperty/valueId"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//AasModelRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//AasModelRoot/assetadministrationshells"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AasModelRoot/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//HasExtensions">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//HasExtensions/extension"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Extension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Extension/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Extension/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Extension/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//Qualifiable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Qualifiable/qualifier"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//Qualifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Qualifier/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Qualifier/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//Qualifier/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//Qualifier/valueId"/>
+    </genClasses>
+    <genClasses ecoreClass="aas.ecore#//AnnotatedRelationshipElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aas.ecore#//AnnotatedRelationshipElement/dataelement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aas.ecore#//AnnotatedRelationshipElement/note"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="aas.ecore#//ComposableElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aas.ecore#//ComposableElement/submodelelement"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

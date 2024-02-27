@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="AasEditorAdvisorApplication">
+      <!-- @generated aas -->
+      <application>
+         <run class="AAS.presentation.AasEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated aas -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="AAS.presentation.AasEditorAdvisor$Perspective"
+            id="AAS.presentation.AasEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated aas -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="AAS.presentation.AasEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="AAS.presentation.AasEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated aas -->
+      <key
+            commandId="AAS.presentation.AasEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="AAS.presentation.AasEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated aas -->
+      <actionSet
+            label="%_UI_AasEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="AasEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="AAS.presentation.AasEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="AAS.presentation.AasEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="AAS.presentation.AasEditorAdvisorOpenURICommand"
+               class="AAS.presentation.AasEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="AAS.presentation.AasEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="AAS.presentation.AasEditorAdvisorOpenCommand"
+               class="AAS.presentation.AasEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="AAS.presentation.AasEditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated aas -->
+      <actionSet
+            label="%_UI_AASModelWizard_ActionSet_label"
+            visible="true"
+            id="AAS.presentation.AASActionBarContributorActionSet">
+         <action
+               label="%_UI_AASModelWizard_label"
+               class="AAS.presentation.AASActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="AAS.presentation.AASActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated aas -->
+      <editor
+            id="AAS.presentation.AASEditorID"
+            name="%_UI_AASEditor_label"
+            icon="icons/full/obj16/AASModelFile.gif"
+            extensions="aas"
+            class="AAS.presentation.AASEditor"
+            contributorClass="AAS.presentation.AASActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
