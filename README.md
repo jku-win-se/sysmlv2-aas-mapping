@@ -13,7 +13,6 @@ Currently, it contains an EMF tree-based editor for modeling AAS (Asset Administ
 
 - Create and edit AAS models.
 - Visualize the hierarchical structure of AAS elements.
-- Export AAS models to various formats (e.g., XML, JSON).
 
 ## Usage
 
