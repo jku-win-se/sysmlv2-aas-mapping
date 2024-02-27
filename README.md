@@ -6,8 +6,7 @@ Currently, it contains an EMF tree-based editor for modeling AAS (Asset Administ
 ## Getting Started
 
 1. Clone this repository.
-2. Build the project using your favorite build tool (e.g., Maven, Gradle).
-3. Run the standalone application to start the EMF tree-based editor.
+2. Run the standalone application to start the EMF tree-based editor.
 
 ## Features
 
