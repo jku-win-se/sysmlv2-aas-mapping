@@ -1,26 +1,32 @@
-#Title: 
-Towards Interoperable Digital Twins: Integrating SysML into AAS with Higher Order Transformations
+# My Awesome Project
 
-##Authors: 
-Enxhi Ferko, Luca Berardinelli, Alessio Bucaioni, Moris Behnam, and Manuel Wimmer
+Welcome to my awesome project! This repository contains an EMF tree-based editor for modeling AAS (Asset Administration Shell) models conforming to the `aas.ecore`.
 
-##Abstract: 
-This paper proposes a model-driven engineering approach that leverages higher-order transformations and the Asset Administration Shell (AAS) as a pivotal model to tackle the interoperability challenges associated with digital twin systems. The paper illustrates the approach through a vehicle use case represented using the Systems Modeling Language version 2 (SysML v2) and consolidating this description into an AAS model. The paper also provides an Ecore-based implementation of the AAS information metamodel and the mapping rules between SysML v2 and AAS.
+## Getting Started
 
-##Keywords: 
-Digital twin, Asset administration shell, SysML v2, interoperability, Model-driven engineering.
+1. Clone this repository.
+2. Build the project using your favorite build tool (e.g., Maven, Gradle).
+3. Run the standalone application to start the EMF tree-based editor.
 
-##Content: 
-This repository contains the Asset Administation Shell metamodel and editor used in the paper.
+## Features
 
-### Import Existing Projects into Eclipse
+- Create and edit AAS models.
+- Visualize the hierarchical structure of AAS elements.
+- Export AAS models to various formats (e.g., XML, JSON).
 
-1. Open Eclipse.
-2. Go to **File > Import...**.
-3. Select **General > Existing Projects into Workspace** and click **Next**.
-4. Choose the **Select root directory** option and browse to the location where your project is present.
-5. Click **OK** and then **Finish**.
+## Usage
 
-This will add your existing project to your Eclipse workspace, allowing you to work on it seamlessly. Happy coding! 🚀🌟
+1. Launch the application.
+2. Load an existing AAS model or create a new one.
+3. Use the tree-based editor to add, modify, or delete AAS elements.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions, feel free to open an issue or submit a pull request.
 
 
+## Eclipse Public License (EPL) v2
+
+The accompanying program is provided under the terms of this **Eclipse Public License (EPL) v2**. Any use, reproduction, or distribution of the program constitutes the recipient's acceptance of this agreement.
+
+For the full text of the **EPL v2**, please visit: [License Text](https://www.eclipse.org/legal/epl-2.0/)
