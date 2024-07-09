@@ -3,6 +3,12 @@
 This repository contains the supporting software for the SysML to AAS Mapping Project.
 Currently, it contains an EMF tree-based editor for modeling AAS (Asset Administration Shell) models conforming to the `aas.ecore`.
 
+
+# Publication
+
+![image](https://github.com/jku-win-se/sysmlv2-aas-mapping/assets/925612/bcc15560-04e9-4dd3-b3d0-36a2643dad36)
+[Authors' version](https://epub.jku.at/obvulioa/content/pageview/9826739)
+
 ## Getting Started
 
 1. Clone this repository.
