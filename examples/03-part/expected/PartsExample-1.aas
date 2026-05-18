@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AAS:AasModelRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AAS="www.jku.at/AAS" name="ModelContainer">
+  <assetadministrationshells idShort="Parts Example-1">
+    <submodel idShort="Hierarchical Structures">
+      <submodelelement xsi:type="AAS:Entity" idShort="Vehicle">
+        <qualifier type="PartDefinition"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="eng">
+          <qualifier type="PartUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="eng">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.0/@submodelelement.0"/>
+            </first>
+            <second>
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="Engine">
+        <qualifier type="PartDefinition"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="cyl">
+          <qualifier type="PartUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="cyl">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.1/@submodelelement.0"/>
+            </first>
+            <second>
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="Cylinder">
+        <qualifier type="PartDefinition"/>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="smallVehicle">
+        <qualifier type="PartUsage"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="eng">
+          <qualifier type="PartUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="eng">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.3/@submodelelement.0"/>
+            </first>
+            <second>
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="bigVehicle">
+        <qualifier type="PartUsage"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="eng">
+          <qualifier type="PartUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="eng">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.4/@submodelelement.0"/>
+            </first>
+            <second>
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+    </submodel>
+  </assetadministrationshells>
+</AAS:AasModelRoot>

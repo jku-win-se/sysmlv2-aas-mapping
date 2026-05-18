@@ -1,5 +1,7 @@
 # SysML v2 → AAS Mapping
 
+[![CI](https://github.com/jku-win-se/sysmlv2-aas-mapping/actions/workflows/ci.yml/badge.svg)](https://github.com/jku-win-se/sysmlv2-aas-mapping/actions/workflows/ci.yml)
+
 Model-to-model transformation that generates **Asset Administration Shell (AAS)** models
 from **SysML v2** system-engineering models, implemented with Eclipse EMF and QVTo.
 

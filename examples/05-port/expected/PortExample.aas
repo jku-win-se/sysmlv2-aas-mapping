@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AAS:AasModelRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AAS="www.jku.at/AAS" name="ModelContainer">
+  <assetadministrationshells idShort="Port Example">
+    <submodel idShort="Hierarchical Structures">
+      <submodelelement xsi:type="AAS:Entity" idShort="Fuel">
+        <qualifier type="PartDefinition"/>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="FuelOutPort">
+        <qualifier type="PortDefinition"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="fuelSupply">
+          <qualifier type="ItemUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="fuelSupply">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.1/@submodelelement.0"/>
+            </first>
+            <second>
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="fuelReturn">
+          <qualifier type="ItemUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="fuelReturn">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.1/@submodelelement.1"/>
+            </first>
+            <second>
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="FuelInPort">
+        <qualifier type="PortDefinition"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="fuelSupply">
+          <qualifier type="ItemUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="fuelSupply">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.2/@submodelelement.0"/>
+            </first>
+            <second>
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="fuelReturn">
+          <qualifier type="ItemUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="fuelReturn">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.2/@submodelelement.1"/>
+            </first>
+            <second>
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="FuelTankAssembly">
+        <qualifier type="PartDefinition"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="fuelTankPort">
+          <qualifier type="PortUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="fuelTankPort">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.3/@submodelelement.0"/>
+            </first>
+            <second name="FuelOutPort">
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Entity" idShort="Engine">
+        <qualifier type="PartDefinition"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="engineFuelPort">
+          <qualifier type="PortUsage"/>
+          <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+            <first name="engineFuelPort">
+              <key referable="//@assetadministrationshells.0/@submodel.0/@submodelelement.4/@submodelelement.0"/>
+            </first>
+            <second name="FuelInPort">
+              <key/>
+            </second>
+          </submodelelement>
+        </submodelelement>
+      </submodelelement>
+      <submodelelement xsi:type="AAS:Property" idShort="Temp">
+        <qualifier type="AttributeDefinition"/>
+      </submodelelement>
+    </submodel>
+  </assetadministrationshells>
+</AAS:AasModelRoot>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AAS="www.jku.at/AAS">
+  <AAS:AasModelRoot name="ModelContainer">
+    <assetadministrationshells idShort="VehicleDefinitions">
+      <submodel idShort="Hierarchical Structures">
+        <submodelelement xsi:type="AAS:Entity" idShort="Vehicle">
+          <qualifier type="PartDefinition"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="Transmission">
+          <qualifier type="PartDefinition"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="AxleAssembly">
+          <qualifier type="PartDefinition"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="Axle">
+          <qualifier type="PartDefinition"/>
+          <submodelelement xsi:type="AAS:Entity" idShort="leftMountingPoint">
+            <qualifier type="PortUsage"/>
+            <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+              <first name="leftMountingPoint">
+                <key referable="/0/@assetadministrationshells.0/@submodel.0/@submodelelement.3/@submodelelement.0"/>
+              </first>
+              <second name="AxleMountIF">
+                <key/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:Entity" idShort="rightMountingPoint">
+            <qualifier type="PortUsage"/>
+            <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+              <first name="rightMountingPoint">
+                <key referable="/0/@assetadministrationshells.0/@submodel.0/@submodelelement.3/@submodelelement.1"/>
+              </first>
+              <second name="AxleMountIF">
+                <key/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="Wheel">
+          <qualifier type="PartDefinition"/>
+          <submodelelement xsi:type="AAS:Entity" idShort="hub">
+            <qualifier type="PortUsage"/>
+            <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+              <first name="hub">
+                <key referable="/0/@assetadministrationshells.0/@submodel.0/@submodelelement.4/@submodelelement.0"/>
+              </first>
+              <second name="WheelHubIF">
+                <key/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="Lugbolt">
+          <qualifier type="PartDefinition"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="DriveIF">
+          <qualifier type="PortDefinition"/>
+          <submodelelement xsi:type="AAS:Entity" idShort="driveTorque">
+            <qualifier type="ReferenceUsage"/>
+            <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+              <first name="driveTorque">
+                <key referable="/0/@assetadministrationshells.0/@submodel.0/@submodelelement.6/@submodelelement.0"/>
+              </first>
+              <second>
+                <key/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="AxleMountIF">
+          <qualifier type="PortDefinition"/>
+          <submodelelement xsi:type="AAS:Entity" idShort="transferredTorque">
+            <qualifier type="ReferenceUsage"/>
+            <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+              <first name="transferredTorque">
+                <key referable="/0/@assetadministrationshells.0/@submodel.0/@submodelelement.7/@submodelelement.0"/>
+              </first>
+              <second>
+                <key/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="WheelHubIF">
+          <qualifier type="PortDefinition"/>
+          <submodelelement xsi:type="AAS:Entity" idShort="appliedTorque">
+            <qualifier type="ReferenceUsage"/>
+            <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+              <first name="appliedTorque">
+                <key referable="/0/@assetadministrationshells.0/@submodel.0/@submodelelement.8/@submodelelement.0"/>
+              </first>
+              <second>
+                <key/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="Mounting">
+          <qualifier type="InterfaceDefinition"/>
+          <submodelelement xsi:type="AAS:Entity" idShort="axleMount">
+            <qualifier type="PortUsage"/>
+            <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+              <first name="axleMount">
+                <key referable="/0/@assetadministrationshells.0/@submodel.0/@submodelelement.9/@submodelelement.0"/>
+              </first>
+              <second name="AxleMountIF">
+                <key/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:Entity" idShort="hub">
+            <qualifier type="PortUsage"/>
+            <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+              <first name="hub">
+                <key referable="/0/@assetadministrationshells.0/@submodel.0/@submodelelement.9/@submodelelement.1"/>
+              </first>
+              <second name="WheelHubIF">
+                <key/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:Entity">
+            <qualifier type="FlowConnectionUsage"/>
+            <submodelelement xsi:type="AAS:RelationshipElement" name="defined by">
+              <first>
+                <key referable="/0/@assetadministrationshells.0/@submodel.0/@submodelelement.9/@submodelelement.2"/>
+              </first>
+              <second>
+                <key/>
+              </second>
+            </submodelelement>
+          </submodelelement>
+          <submodelelement xsi:type="AAS:SubmodelElementCollection">
+            <extension name="The definition of the interface for mounting a Wheel to an Axle. "/>
+            <qualifier type="Comment"/>
+            <submodelelement xsi:type="AAS:File" idShort="The definition of the interface for mounting a Wheel to an Axle. "/>
+          </submodelelement>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection">
+          <extension name="Example vehicle definitions model.&#xA;"/>
+          <qualifier type="Comment"/>
+          <submodelelement xsi:type="AAS:File" idShort="Example vehicle definitions model.&#xA;"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection">
+          <extension name="PART DEFINITIONS "/>
+          <qualifier type="Comment"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection">
+          <extension name="PORT DEFINITIONS "/>
+          <qualifier type="Comment"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:SubmodelElementCollection">
+          <extension name="INTERFACE DEFINITIONS "/>
+          <qualifier type="Comment"/>
+        </submodelelement>
+      </submodel>
+    </assetadministrationshells>
+  </AAS:AasModelRoot>
+  <AAS:Qualifier type="Documentation"/>
+  <AAS:Qualifier type="Documentation"/>
+</xmi:XMI>
