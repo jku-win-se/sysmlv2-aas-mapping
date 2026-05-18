@@ -1,0 +1,25 @@
+-- SysML v2 → AAS Model Transformation
+-- Reference: Ferko, Berardinelli et al., JSS 2026, DOI 10.1016/j.jss.2025.112688
+-- Original: jku-win-se/SysMLv2-AAS-integration, MDE artifact/Transformation/SysML2AAS.qvto
+
+modeltype SysMLv2MM uses 'https://www.omg.org/spec/SysML/20240201';
+modeltype AASMM uses 'www.jku.at/AAS';
+
+transformation SysML2AAS(in srcModel : SysMLv2MM, out AASMM);
+
+import 'lib/helpers';
+import 'mappings/structural';
+import 'mappings/behavioral';
+import 'mappings/relationships';
+import 'mappings/comments';
+
+-- allEntities kept for future cross-reference resolution (all entities must exist before refs can be resolved)
+-- property allEntities : List(AASMM::Entity) = List{};
+
+main() {
+    var rootNamespace := srcModel.rootObjects()![SysMLv2MM::Namespace];
+    object AasModelRoot {
+        name := "ModelContainer";
+        assetadministrationshells := rootNamespace.ownedPackages() -> map toAssetAdministrationShell();
+    };
+}

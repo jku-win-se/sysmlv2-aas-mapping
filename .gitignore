@@ -1,4 +1,29 @@
-# Ignore Eclipse project files
+# Eclipse project files
 .project
 .classpath
 .settings/
+
+# Compiled class files
+bin/
+*.class
+
+# Python bytecode
+*.pyc
+__pycache__/
+
+# Maven build output
+target/
+build/
+
+# Logs
+*.log
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Engineering process (not for public repo)
+task-briefs/
+docs/handoff-*.md
+data-out/
+scratch/

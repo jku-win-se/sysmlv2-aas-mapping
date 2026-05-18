@@ -1,0 +1,37 @@
+-- comments.qvto — Comment/Documentation Mappings: Comment → Extension, Documentation → File
+-- Reference: Ferko, Berardinelli et al., JSS 2026
+-- Original: jku-win-se/SysMLv2-AAS-integration, MDE artifact/Transformation/SysML2AAS.qvto
+
+modeltype SysMLv2MM uses 'https://www.omg.org/spec/SysML/20240201';
+modeltype AASMM uses 'www.jku.at/AAS';
+
+transformation comments(in srcModel : SysMLv2MM, out AASMM);
+
+import 'lib/helpers';
+
+-- Documentation → SubmodelElementCollection with File; Comment → with Extension
+mapping SysMLv2MM::Comment::toSubmodelelementCollection4ExtensionorDocument(): AASMM::SubmodelElementCollection {
+    if self.oclIsKindOf(SysMLv2MM::Documentation) then {
+        result.submodelelement := self[Documentation].map toFile();
+        var qualifier := object AASMM::Qualifier {
+            type := "Documentation";
+        };
+        result.qualifier := qualifier;
+    } endif;
+
+    if self.oclIsKindOf(SysMLv2MM::Comment) then {
+        var extension := object AASMM::Extension {
+            name := self.body;
+        };
+        var qualifier := object AASMM::Qualifier {
+            type := "Comment";
+        };
+        result.extension := extension;
+        result.qualifier := qualifier;
+    } endif;
+}
+
+-- Documentation → File with idShort from body
+mapping SysMLv2MM::Documentation::toFile(): AASMM::File {
+    result.idShort := self.body;
+}

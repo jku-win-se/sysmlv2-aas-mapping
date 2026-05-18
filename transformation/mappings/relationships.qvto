@@ -1,0 +1,51 @@
+-- relationships.qvto — Relationship Mappings: FeatureMembership → RelationshipElement
+-- Reference: Ferko, Berardinelli et al., JSS 2026
+-- Original: jku-win-se/SysMLv2-AAS-integration, MDE artifact/Transformation/SysML2AAS.qvto
+
+modeltype SysMLv2MM uses 'https://www.omg.org/spec/SysML/20240201';
+modeltype AASMM uses 'www.jku.at/AAS';
+
+transformation relationships(in srcModel : SysMLv2MM, out AASMM);
+
+import 'lib/helpers';
+
+-- Table 3: FeatureMembership → RelationshipElement "defined by"
+-- NOTE: secondReferable.key.referable is intentionally left unset — cross-reference
+-- resolution requires all entities to exist first; this is documented future work.
+mapping SysMLv2MM::FeatureMembership::toRelationElement(tempEntity : AASMM::Entity): AASMM::RelationshipElement {
+    result.name := "defined by";
+    var firstReferable := object AASMM::Reference {
+        name := self.ownedMemberName;
+        key := object AASMM::Key {
+            referable := tempEntity;
+        }
+    };
+    result.second := firstReferable;
+    var secondReferable := object AASMM::Reference {
+        name := self.target[SysMLv2MM::PortUsage] -> first().occurrenceDefinition.name -> first();
+        key := object AASMM::Key {
+        }
+    };
+    result.first := firstReferable;
+    result.second := secondReferable;
+}
+
+-- Table 3: FeatureMembership (AttributeUsage) → RelationshipElement "generalises"
+-- NOTE: secondReferable.key.referable is intentionally left unset (same limitation as above)
+mapping SysMLv2MM::FeatureMembership::toRelationElement4Property(): AASMM::RelationshipElement {
+    result.name := "generalises";
+    var firstReferable := object AASMM::Reference {
+        name := self.ownedMemberName;
+        key := object AASMM::Key {
+        }
+    };
+    result.second := firstReferable;
+    var secondReferable := object AASMM::Reference {
+        name := self.toString();
+        name := self.target[SysMLv2MM::AttributeUsage].attributeDefinition.name -> first();
+        key := object AASMM::Key {
+        }
+    };
+    result.first := firstReferable;
+    result.second := secondReferable;
+}

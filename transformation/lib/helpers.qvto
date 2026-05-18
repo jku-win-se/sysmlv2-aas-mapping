@@ -1,0 +1,60 @@
+-- helpers.qvto — Shared utility queries
+-- Original: jku-win-se/SysMLv2-AAS-integration, MDE artifact/Transformation/SysML2AAS.qvto
+
+modeltype SysMLv2MM uses 'https://www.omg.org/spec/SysML/20240201';
+modeltype AASMM uses 'www.jku.at/AAS';
+
+library helpers(in srcModel : SysMLv2MM);
+
+-- return packages to be mapped to AssetAdministrationShells
+query SysMLv2MM::Element::ownedPackages(): Sequence(SysMLv2MM::Package) {
+    return self.ownedRelationship[SysMLv2MM::OwningMembership]
+               [ownedRelatedElement->forAll(not oclIsKindOf(AnnotatingElement))]
+               .ownedRelatedElement[Package];
+}
+
+-- return ownedRelationships that are not annotations
+query SysMLv2MM::Element::ownedMemberMemberships(): OrderedSet(SysMLv2MM::OwningMembership) {
+    return self.ownedRelationship[SysMLv2MM::OwningMembership]
+               [ownedRelatedElement->forAll(not oclIsKindOf(AnnotatingElement))];
+}
+
+-- return Comment-annotating elements
+query SysMLv2MM::Element::ownedComments(): Sequence(SysMLv2MM::Comment) {
+    return self.ownedRelationship[SysMLv2MM::OwningMembership]
+               [ownedRelatedElement->forAll(oclIsKindOf(Comment))]
+               .ownedRelatedElement[Comment];
+}
+
+-- return members mapped to Entity; excludes ActionDef/Usage, AttributeUsage/Def, Expression, StateDef/Usage to avoid double-mapping
+query SysMLv2MM::Element::ownedMembers(): Sequence(SysMLv2MM::Element) {
+    return self.ownedMemberMemberships().ownedRelatedElement
+        -> select(e | not e.oclIsKindOf(SysMLv2MM::AnnotatingElement)
+                   and not e.oclIsKindOf(SysMLv2MM::ActionDefinition)
+                   and not e.oclIsKindOf(SysMLv2MM::ActionUsage)
+                   and not e.oclIsKindOf(SysMLv2MM::AttributeUsage)
+                   and not e.oclIsKindOf(SysMLv2MM::AttributeDefinition)
+                   and not e.oclIsKindOf(SysMLv2MM::Expression)
+                   and not e.oclIsKindOf(SysMLv2MM::StateDefinition)
+                   and not e.oclIsKindOf(SysMLv2MM::StateUsage));
+}
+
+-- return ActionDefinition and ActionUsage members (mapped to Operation)
+query SysMLv2MM::Element::ownedActions(): Sequence(SysMLv2MM::Element) {
+    return self.ownedMemberMemberships().ownedRelatedElement
+        -> select(e | e.oclIsKindOf(ActionDefinition) and e.oclIsKindOf(ActionUsage));
+}
+
+-- return StateDefinition members (mapped to SubmodelElementCollection state)
+query SysMLv2MM::Element::ownedStateDef(): Sequence(SysMLv2MM::Element) {
+    return self.ownedRelationship[SysMLv2MM::OwningMembership]
+               [ownedRelatedElement->forAll(oclIsKindOf(StateDefinition))]
+               .ownedRelatedElement;
+}
+
+-- return AttributeDefinition members (mapped to Property)
+query SysMLv2MM::Element::ownedAttributes(): Sequence(SysMLv2MM::Element) {
+    return self.ownedRelationship[SysMLv2MM::OwningMembership]
+               [ownedRelatedElement->forAll(oclIsKindOf(AttributeDefinition))]
+               .ownedRelatedElement[AttributeDefinition];
+}

@@ -1,0 +1,30 @@
+-- behavioral.qvto — Behavioral Mappings: Actions → Operation, States → SubmodelElementCollection
+-- Reference: Ferko, Berardinelli et al., JSS 2026
+-- Original: jku-win-se/SysMLv2-AAS-integration, MDE artifact/Transformation/SysML2AAS.qvto
+
+modeltype SysMLv2MM uses 'https://www.omg.org/spec/SysML/20240201';
+modeltype AASMM uses 'www.jku.at/AAS';
+
+transformation behavioral(in srcModel : SysMLv2MM, out AASMM);
+
+import 'lib/helpers';
+
+-- Table 2: Element → SubmodelElementCollection wrapping an Operation
+mapping SysMLv2MM::Element::toSubmodelelementCollection4Operation(): AASMM::SubmodelElementCollection {
+    result.submodelelement += self -> map toOperation();
+}
+
+-- Table 2: Element (ActionDefinition/ActionUsage) → Operation; Qualifier from class name
+mapping SysMLv2MM::Element::toOperation(): AASMM::Operation {
+    result.idShort := self.name;
+    var qualifier := object AASMM::Qualifier {
+        type := self.owningMembership.memberElement.toString()
+                    .substringBefore("Impl@").substringAfter('org.omg.sysml.lang.sysml.impl.');
+    };
+    result.qualifier := qualifier;
+}
+
+-- Table 2: StateDefinition → SubmodelElementCollection (stub; toState() is future work)
+mapping SysMLv2MM::Element::toSubmodelelementCollection4State(): AASMM::SubmodelElementCollection {
+    -- result.submodelelement := self.map toState();
+}

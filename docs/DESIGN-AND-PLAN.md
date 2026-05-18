@@ -1,0 +1,162 @@
+# Design & Architectural Decisions
+
+This log records significant architectural choices made for the
+SysML v2 → AAS mapping project. Each entry is immutable once merged;
+superseding decisions get a new record that references the old one.
+
+---
+
+## D-001 — Choice of EMF + QVTo as the transformation stack
+
+**Date:** 2026-05-18
+**Status:** Accepted
+**Authors:** Ferko, Berardinelli, Bucaioni, Behnam, Wimmer
+
+### Context
+
+We needed a model-to-model (M2M) transformation engine that could:
+- Operate on formally typed metamodels (not ad-hoc XML/JSON scripts)
+- Integrate with the Eclipse ecosystem used by the research group
+- Produce artefacts that are directly loadable by AAS runtime environments
+- Support academic reproducibility (open-source, no proprietary runtime)
+
+### Decision
+
+Use **Eclipse Modeling Framework (EMF)** for both source (SysML v2 subset) and
+target (AAS) metamodels, and **QVT Operational (QVTo)** as the transformation
+language.
+
+- The AAS metamodel is defined as an `.ecore` file (`aas/model/aas.ecore`).
+- EMF code generation produces Java-based model APIs consumed by QVTo.
+- The transformation is a `.qvto` script that maps SysML v2 structural concepts
+  (blocks, properties, ports) to AAS concepts (Asset, Submodel, SubmodelElement).
+
+### Rationale
+
+| Criterion | EMF + QVTo | Alternative (ATL) | Alternative (plain Java) |
+|-----------|-----------|-------------------|--------------------------|
+| Formal metamodel typing | ✓ | ✓ | ✗ (manual) |
+| Eclipse integration | ✓ native | ✓ | ✓ |
+| Operational style (imperative helpers) | ✓ | ✗ (relational) | ✓ |
+| Community & tooling | mature | mature | n/a |
+| Research group familiarity | high | medium | high |
+
+QVTo was preferred over ATL because the mapping rules require imperative
+helper functions (e.g., name-mangling, cardinality resolution) that are
+awkward to express in ATL's purely relational style.
+
+### Consequences
+
+- All Java source files in `aas/`, `aas.edit/`, `aas.editor/` are
+  **EMF-generated** and must be regenerated via the `.genmodel`, not edited by hand.
+- The transformation entry point is a `.qvto` file (to be added in a future task).
+- Developers need Eclipse Modeling Tools (≥ 2023-09) with MDT QVTo installed.
+
+---
+
+## D-002 — Maven standalone build over Tycho
+
+**Date:** 2026-05-18
+**Status:** Accepted
+**Authors:** Berardinelli (TB-02)
+
+### Context
+
+The three Eclipse OSGi plugins (`aas/`, `aas.edit/`, `aas.editor/`) have no
+`pom.xml`; they can only be compiled inside Eclipse or via the Tycho Maven plugin,
+which requires a full p2 target-platform configuration pointing at an Eclipse
+update-site mirror. The QVTo transformation pipeline (TB-03) needs the AAS metamodel
+as a plain classpath dependency — not as an OSGi bundle.
+
+### Decision
+
+Add a **Maven standalone** module `aas-metamodel` (parallel to the Eclipse plugin
+folders, which are left untouched). The module:
+- Physically copies the EMF-generated Java sources from `aas/src/AAS/` into
+  `aas-metamodel/src/main/java/AAS/` (copy, not symlink, so Maven source roots
+  stay within the module directory).
+- Declares `org.eclipse.emf:org.eclipse.emf.common` and
+  `org.eclipse.emf:org.eclipse.emf.ecore` as regular Maven dependencies,
+  resolved from the Eclipse Release Repository (`repo.eclipse.org`).
+- Produces a plain JAR (`aas-metamodel-1.0-SNAPSHOT.jar`) with no OSGi metadata
+  beyond informational manifest entries.
+- Uses Java 11 as source/target level (compatible with EMF-generated code).
+
+Tycho was explicitly rejected.
+
+### Rationale
+
+| Criterion | Maven standalone | Tycho |
+|-----------|-----------------|-------|
+| Setup complexity | low (one pom.xml) | high (target platform, p2 repo) |
+| CI reproducibility | high | medium (p2 mirrors can break) |
+| OSGi runtime needed | no | yes |
+| Suitable for CLI transformation | yes | no |
+| Research artifact goal | ✓ | ✗ |
+
+### Consequences
+
+- `aas-metamodel/src/main/java/AAS/` must be kept in sync with `aas/src/AAS/`
+  whenever the EMF metamodel is regenerated (manual copy step, documented in README).
+- `aas.edit/` and `aas.editor/` are excluded from the Maven build — the editor UI
+  is not needed for the transformation pipeline.
+- Future modules (e.g., `transformation`) declare `aas-metamodel` as a Maven
+  dependency via `<groupId>io.github.jku-win-se</groupId>`.
+
+---
+
+## D-003 — QVTo scripts as specification + Java/EMF as standalone executor
+
+**Date:** 2026-05-18
+**Status:** Accepted
+**Authors:** Berardinelli (TB-03)
+
+### Context
+
+The QVTo transformation language (Eclipse M2M) is the natural implementation
+vehicle for the mapping rules defined in Tables 1-3 of the JSS 2026 paper.
+However, the Eclipse M2M QVTo runtime is not available as clean standalone Maven
+artifacts; running it outside Eclipse requires complex OSGi / p2 setup.
+
+At the same time, the project needs:
+1. A formal, tool-readable specification of the mapping rules (academic reproducibility).
+2. A CLI runner that produces AAS XMI from SysML XMI without opening Eclipse.
+
+### Decision
+
+**Dual-layer implementation:**
+
+1. **QVTo scripts** (`sysml2aas.qvto`, `mappings/structural.qvto`,
+   `mappings/behavioral.qvto`, `mappings/relationships.qvto`, `lib/helpers.qvto`)
+   — authoritative specification of the mapping rules, executable inside Eclipse
+   via Eclipse M2M QVTo. Each rule has a single-line comment referencing its
+   paper table row.
+
+2. **Java/EMF runner** (`RunTransformation.java`, `SysML2AASTransformer.java`)
+   — implements the same rules via the EMF reflective API. Accepts four arguments
+   (`--input`, `--output`, `--sysml-mm`, `--aas-mm`), loads the SysML metamodel
+   dynamically at runtime (no SysML code generation required), and produces a
+   conformant AAS XMI file.
+
+The Maven module (`transformation/pom.xml`) packages both artefacts and produces
+a fat JAR via `maven-assembly-plugin`.
+
+### Rationale
+
+| Criterion | QVTo-only | Java/EMF | Dual-layer (chosen) |
+|-----------|-----------|----------|---------------------|
+| Academic spec fidelity | ✓ | ✗ | ✓ (QVTo scripts) |
+| Standalone CLI | ✗ | ✓ | ✓ (Java runner) |
+| Maven build | ✗ | ✓ | ✓ |
+| Eclipse execution | ✓ | ✗ | ✓ |
+
+### Consequences
+
+- When the AAS metamodel is updated (via Eclipse EMF regeneration), both the
+  QVTo scripts and the Java runner must be updated in sync.
+- The `SysML2AASTransformer` walks `ownedRelationship[OwningMembership]
+  .ownedRelatedElement` — the canonical SysML v2 XMI containment path.
+- Behavioral and relationship mappings (Tables 2-3) are fully specified in the
+  QVTo scripts; the Java runner implements structural mappings (Table 1) fully
+  plus ActionDefinition/ActionUsage from Table 2. Tables 2-3 can be completed
+  in a future task by extending `SysML2AASTransformer.mapElement()`.

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  VehicleDefinitions.xmi
+  XMI serialisation of VehicleDefinitions.sysml (aas/examples/Vehicle Example/)
+  conformant to SysML v2 Pilot Implementation metamodel
+  (https://www.omg.org/spec/SysML/20250201)
+
+  Used as input to RunTransformation for end-to-end testing (TB-03).
+  Structural concepts only; behavioral / relationship elements are stubs.
+-->
+<sysml:Package
+    xmlns:sysml="https://www.omg.org/spec/SysML/20250201"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmi:version="2.0"
+    declaredName="VehicleDefinitions">
+
+  <!-- part def Vehicle -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:PartDefinition" declaredName="Vehicle"/>
+  </ownedRelationship>
+
+  <!-- part def Transmission -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:PartDefinition" declaredName="Transmission"/>
+  </ownedRelationship>
+
+  <!-- part def AxleAssembly -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:PartDefinition" declaredName="AxleAssembly"/>
+  </ownedRelationship>
+
+  <!-- part def Axle { port leftMountingPoint; port rightMountingPoint; } -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:PartDefinition" declaredName="Axle">
+      <ownedRelationship xsi:type="sysml:FeatureMembership">
+        <ownedRelatedElement xsi:type="sysml:PortUsage" declaredName="leftMountingPoint"/>
+      </ownedRelationship>
+      <ownedRelationship xsi:type="sysml:FeatureMembership">
+        <ownedRelatedElement xsi:type="sysml:PortUsage" declaredName="rightMountingPoint"/>
+      </ownedRelationship>
+    </ownedRelatedElement>
+  </ownedRelationship>
+
+  <!-- part def Wheel { port hub; } -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:PartDefinition" declaredName="Wheel">
+      <ownedRelationship xsi:type="sysml:FeatureMembership">
+        <ownedRelatedElement xsi:type="sysml:PortUsage" declaredName="hub"/>
+      </ownedRelationship>
+    </ownedRelatedElement>
+  </ownedRelationship>
+
+  <!-- part def Lugbolt { attribute tighteningTorque; } -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:PartDefinition" declaredName="Lugbolt">
+      <ownedRelationship xsi:type="sysml:FeatureMembership">
+        <ownedRelatedElement xsi:type="sysml:AttributeUsage" declaredName="tighteningTorque"/>
+      </ownedRelationship>
+    </ownedRelatedElement>
+  </ownedRelationship>
+
+  <!-- port def DriveIF -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:PortDefinition" declaredName="DriveIF"/>
+  </ownedRelationship>
+
+  <!-- port def AxleMountIF -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:PortDefinition" declaredName="AxleMountIF"/>
+  </ownedRelationship>
+
+  <!-- port def WheelHubIF -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:PortDefinition" declaredName="WheelHubIF"/>
+  </ownedRelationship>
+
+  <!-- interface def Mounting -->
+  <ownedRelationship xsi:type="sysml:OwningMembership">
+    <ownedRelatedElement xsi:type="sysml:InterfaceDefinition" declaredName="Mounting"/>
+  </ownedRelationship>
+
+</sysml:Package>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.jku-win-se</groupId>
+  <artifactId>sysmlv2-aas-mapping</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>SysML v2 → AAS Mapping — Parent</name>
+  <description>QVTo model transformation from SysML v2 to Asset Administration Shell (AAS) — JSS 2026</description>
+  <url>https://github.com/jku-win-se/sysmlv2-aas-mapping</url>
+
+  <modules>
+    <module>aas-metamodel</module>
+    <module>transformation</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <!-- EMF versions aligned with Eclipse 2023-09 (4.29) -->
+    <emf.common.version>2.27.0</emf.common.version>
+    <emf.ecore.version>2.35.0</emf.ecore.version>
+    <emf.xmi.version>2.16.0</emf.xmi.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>eclipse-releases</id>
+      <name>Eclipse Release Repository</name>
+      <url>https://repo.eclipse.org/content/groups/releases/</url>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+  </repositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.common</artifactId>
+        <version>${emf.common.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.ecore</artifactId>
+        <version>${emf.ecore.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+        <version>${emf.xmi.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>

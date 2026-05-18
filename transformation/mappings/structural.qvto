@@ -1,0 +1,83 @@
+-- structural.qvto — Structural Mappings: Package → AAS shell, Element → Entity/Property
+-- Reference: Ferko, Berardinelli et al., JSS 2026
+-- Original: jku-win-se/SysMLv2-AAS-integration, MDE artifact/Transformation/SysML2AAS.qvto
+
+modeltype SysMLv2MM uses 'https://www.omg.org/spec/SysML/20240201';
+modeltype AASMM uses 'www.jku.at/AAS';
+
+transformation structural(in srcModel : SysMLv2MM, out AASMM);
+
+import 'lib/helpers';
+
+-- Table 1: Package → AssetAdministrationShell with Submodel containing hierarchical structure
+mapping SysMLv2MM::Element::toAssetAdministrationShell(): AASMM::AssetAdministrationShell {
+    result.idShort := self.name;
+    var submodel := object AASMM::Submodel {
+        idShort := "Hierarchical Structures";
+        submodelelement += self.ownedMembers() -> map toEntity();
+        submodelelement += self.ownedComments() -> map toSubmodelelementCollection4ExtensionorDocument();
+        submodelelement += self.ownedAttributes() -> map toProperty();
+    };
+    result.submodel += submodel;
+}
+
+-- Table 1: Element → Entity; Qualifier type extracted from Java class name via substringBefore/substringAfter
+mapping SysMLv2MM::Element::toEntity(): AASMM::Entity {
+    result.idShort := self.name;
+    var qualifier := object AASMM::Qualifier {
+        type := self.owningMembership.memberElement.toString()
+                    .substringBefore("Impl@").substringAfter('org.omg.sysml.lang.sysml.impl.');
+    };
+    result.qualifier := qualifier;
+    result.submodelelement += self.ownedRelationship[SysMLv2MM::FeatureMembership]
+        [ownedRelatedElement->forAll(not oclIsKindOf(AttributeUsage))] -> map feature2Entity();
+    result.submodelelement += self.ownedRelationship[SysMLv2MM::FeatureMembership]
+        [ownedRelatedElement->forAll(oclIsKindOf(AttributeUsage))]
+        .ownedRelatedElement[SysMLv2MM::FeatureMembership]
+        -> map toSubmodelElementCollection4NestedProperty();
+    result.submodelelement += self.ownedComments()[Documentation]
+        -> map toSubmodelelementCollection4ExtensionorDocument();
+    -- allEntities += result; -- TODO: enable once cross-reference resolution is implemented
+}
+
+-- Table 1: AttributeDefinition → Property; Qualifier from class name
+mapping SysMLv2MM::Element::toProperty(): AASMM::Property {
+    result.idShort := self.name;
+    var qualifier := object AASMM::Qualifier {
+        type := self.owningMembership.memberElement.toString()
+                    .substringBefore("Impl@").substringAfter('org.omg.sysml.lang.sysml.impl.');
+    };
+    result.qualifier := qualifier;
+}
+
+-- Table 1: FeatureMembership → nested Entity with RelationshipElement and recursive nesting
+mapping SysMLv2MM::FeatureMembership::feature2Entity(): AASMM::Entity {
+    result.idShort := self.ownedMemberName;
+    var qualifier := object AASMM::Qualifier {
+        type := self.ownedMemberElement.toString()
+                    .substringBefore("Impl@").substringAfter('org.omg.sysml.lang.sysml.impl.');
+    };
+    result.qualifier := qualifier;
+    var tempEntity := result;
+    result.submodelelement += self -> map toRelationElement(tempEntity);
+    result.submodelelement += self.ownedRelationship[SysMLv2MM::FeatureMembership]
+        [ownedRelatedElement->forAll(not oclIsKindOf(AttributeUsage))] -> map feature2Entity();
+    result.submodelelement += self.ownedRelationship[SysMLv2MM::FeatureMembership]
+        [ownedRelatedElement->forAll(oclIsKindOf(AttributeUsage))]
+        .ownedRelatedElement[SysMLv2MM::FeatureMembership]
+        -> map toSubmodelElementCollection4NestedProperty();
+}
+
+-- Nested property container: FeatureMembership with AttributeUsage → SubmodelElementCollection
+mapping SysMLv2MM::FeatureMembership::toSubmodelElementCollection4NestedProperty(): AASMM::SubmodelElementCollection {
+    result.submodelelement += self -> map toNestedProperty();
+    result.submodelelement += self -> map toRelationElement4Property();
+}
+
+-- Leaf nested property: FeatureMembership → Property; qualifier type is future work (qualifiedName resolution)
+mapping SysMLv2MM::FeatureMembership::toNestedProperty(): Property {
+    result.idShort := self.ownedMemberName;
+    var qualifier := object AASMM::Qualifier {
+    };
+    result.qualifier := qualifier;
+}

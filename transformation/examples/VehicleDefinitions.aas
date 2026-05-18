@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AAS:AasModelRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AAS="www.jku.at/AAS" name="VehicleDefinitions">
+  <assetadministrationshells idShort="VehicleDefinitionsAAS">
+    <identification id="urn:aas:VehicleDefinitions"/>
+    <asset idShort="VehicleDefinitionsAsset" kind="Instance">
+      <identification id="urn:asset:VehicleDefinitions"/>
+    </asset>
+    <submodel idShort="VehicleDefinitionsSM">
+      <identification id="urn:sm:VehicleDefinitions"/>
+      <submodelelement xsi:type="AAS:SubmodelElementCollection" idShort="VehicleDefinitions">
+        <submodelelement xsi:type="AAS:Entity" idShort="Vehicle"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="Transmission"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="AxleAssembly"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="Axle"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="Wheel"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="Lugbolt"/>
+        <submodelelement xsi:type="AAS:Entity" idShort="DriveIF">
+          <qualifier type="PortDefinition"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="AxleMountIF">
+          <qualifier type="PortDefinition"/>
+        </submodelelement>
+        <submodelelement xsi:type="AAS:Entity" idShort="WheelHubIF">
+          <qualifier type="PortDefinition"/>
+        </submodelelement>
+      </submodelelement>
+    </submodel>
+  </assetadministrationshells>
+</AAS:AasModelRoot>
