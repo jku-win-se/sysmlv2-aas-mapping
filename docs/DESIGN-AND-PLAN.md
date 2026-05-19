@@ -334,3 +334,56 @@ which is internal):
   changes; the render command is documented in `docs/architecture.md`.
 - `docs/DESIGN-AND-PLAN.md` is NOT migrated to `SysMLv2-AAS-integration`; it is
   internal engineering process documentation for this working repository.
+
+---
+
+## D-007 — QVTo namespace updated from 20240201 to 20250201
+
+**Date:** 2026-05-19
+**Status:** Accepted
+**Authors:** Berardinelli
+
+### Context
+
+The original `SysML2AAS.qvto` (from jku-win-se/SysMLv2-AAS-integration, written ~2024)
+declares:
+```
+modeltype SysMLv2MM uses 'https://www.omg.org/spec/SysML/20240201';
+```
+The vendored `lib/metamodels/sysml.ecore` (Systems-Modeling/SysML-v2-Pilot-Implementation,
+commit `2c7a2a93f`, 2026-02-13) uses `nsURI = https://www.omg.org/spec/SysML/20250201`.
+
+A namespace mismatch between the QVTo `modeltype` declaration and the actual `nsURI`
+of the loaded `.ecore` causes QVTo to fail to bind any metaclass — the transformation
+runs but produces empty or no output.
+
+### Decision
+
+Update the `modeltype SysMLv2MM` declaration in all QVTo files from `20240201` to
+`20250201`, aligning with the vendored metamodel:
+
+- `transformation/sysml2aas.qvto` — line 5
+- `transformation/lib/helpers.qvto` — line 4
+
+All other QVTo files (`mappings/structural.qvto`, `mappings/behavioral.qvto`,
+`mappings/relationships.qvto`, `mappings/comments.qvto`) inherit the modeltype
+from the importer — no changes needed there.
+
+### Rationale
+
+The OMG updated the SysML v2 metamodel `nsURI` between the 2024 and 2025 releases.
+The pilot implementation repo HEAD (Feb 2026) already uses `20250201`. Since we vendor
+the metamodel from HEAD rather than from a 2024 snapshot, aligning the QVTo namespace
+to the vendored file is the correct fix. The alternative (re-vendoring a 2024 snapshot)
+would pin us to an obsolete metamodel and diverge from current SysML v2 tooling.
+
+### Consequences
+
+- The QVTo scripts are no longer executable against a `20240201` metamodel without
+  reverting this change. Models created with the 2024 pilot implementation may need
+  to be re-serialised with the 2025 implementation.
+- The Java runner (`SysML2AASTransformer.java`) loads the metamodel dynamically at
+  runtime from `--sysml-mm`; it is unaffected by this change (the namespace is read
+  from the `.ecore` file, not hardcoded).
+- `lib/metamodels/README.md` already documents the vendored file as `nsURI 20250201`
+  — now consistent with the QVTo declaration.

@@ -1,7 +1,7 @@
 -- helpers.qvto — Shared utility queries
 -- Original: jku-win-se/SysMLv2-AAS-integration, MDE artifact/Transformation/SysML2AAS.qvto
 
-modeltype SysMLv2MM uses 'https://www.omg.org/spec/SysML/20240201';
+modeltype SysMLv2MM uses 'https://www.omg.org/spec/SysML/20250201'; -- updated from 20240201, see docs/DESIGN-AND-PLAN.md D-007
 modeltype AASMM uses 'www.jku.at/AAS';
 
 library helpers(in srcModel : SysMLv2MM);
