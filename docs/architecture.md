@@ -46,7 +46,7 @@ For standalone CLI execution and CI, the same rules are implemented via the EMF 
 |----------|------|------|
 | `SysML2AASTransformer.java` | `transformation/src/main/java/…` | Implements mapping rules using EMF `eGet`/`eClass` API |
 | `RunTransformation.java` | `transformation/src/main/java/…` | CLI entry point; accepts `--input`, `--output`, `--sysml-mm`, `--aas-mm` |
-| Fat JAR | `transformation/target/transformation-1.0-SNAPSHOT.jar` | Self-contained executable; produced by `mvn package` |
+| Fat JAR | `transformation/target/transformation-1.0-SNAPSHOT-jar-with-dependencies.jar` | Self-contained executable; produced by `mvn package` |
 
 The Java runner loads `sysml.ecore` dynamically at runtime — no SysML code generation is required. It is the layer used by `examples/run-all.sh` in CI.
 

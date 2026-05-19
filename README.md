@@ -36,26 +36,25 @@ sysmlv2-aas-mapping/
 ├── aas/               # EMF metamodel plugin — AAS Ecore metamodel (aas.ecore)
 ├── aas.edit/          # EMF-generated edit plugin (item providers, adapters)
 ├── aas.editor/        # EMF-generated tree-based editor plugin
-├── docs/              # Architecture decisions and design notes
-│   └── DESIGN-AND-PLAN.md
-├── task-briefs/       # Engineering-process docs (gitignored)
+├── aas-metamodel/     # Maven module — standalone AAS metamodel JAR
+├── transformation/    # Maven module — QVTo scripts + Java/EMF CLI runner
+│   ├── sysml2aas.qvto            # QVTo entry point
+│   ├── mappings/                  # QVTo mapping rules (structural, behavioral, relationships, comments)
+│   ├── lib/helpers.qvto           # Shared navigation queries
+│   └── src/main/java/             # RunTransformation.java + SysML2AASTransformer.java
+├── examples/          # Test suite (6/24 implemented; run-all.sh / run-all.ps1)
+├── lib/metamodels/    # Vendored sysml.ecore (nsURI 20250201)
+├── docs/              # Architecture docs, mapping tables, design decisions
+│   ├── DESIGN-AND-PLAN.md        # D-001 … D-007 (ADRs)
+│   ├── mapping-tables.md
+│   ├── architecture.md
+│   └── how-to-extend.md
+├── .github/workflows/ # CI/CD (GitHub Actions — build + transform)
+├── pom.xml            # Root Maven POM (modules: aas-metamodel, transformation)
 ├── LICENSE            # Eclipse Public License v2
 ├── CLAUDE.md          # Conventions for AI-assisted development
 └── README.md
 ```
-
----
-
-## Prerequisites
-
-| Tool | Version | Notes |
-|------|---------|-------|
-| Eclipse Modeling Tools | ≥ 2023-09 | Includes EMF, Xtext, QVTo |
-| Java | ≥ 17 | Eclipse runtime requirement |
-| QVT Operational (QVTo) | bundled with Eclipse MDT | For running the transformation |
-| Git | any | Cloning and version control |
-
-> **No Maven/Gradle build** — the project uses Eclipse PDE plug-in layout.
 
 ---
 
@@ -107,7 +106,7 @@ pwsh examples/run-all.ps1
 | Maven standalone build (`aas-metamodel/`, `transformation/`) | ✅ Complete |
 | QVTo transformation (`transformation/*.qvto`) | ✅ Complete (structural + behavioral + relationships) |
 | Java/EMF CLI runner (`RunTransformation.java`) | ✅ Complete |
-| Example test suite (`examples/`, 6/24) | ✅ Partial — 5 SKIP, 1 PASS |
+| Example test suite (`examples/`, 6/24) | ⚠️ Partial — 5 SKIP, 1 PASS |
 | CI/CD (GitHub Actions) | ✅ Green |
 | Mapping rule documentation (`docs/mapping-tables.md`) | ✅ Complete |
 | Architecture documentation (`docs/architecture.md`) | ✅ Complete |

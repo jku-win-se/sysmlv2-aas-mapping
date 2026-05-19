@@ -9,8 +9,10 @@ to Asset Administration Shell (AAS) models, as described in:
 > "From engineering models to digital twins: Generating AAS from SysML v2 models"
 > JSS 2026, DOI: 10.1016/j.jss.2025.112688
 
-The codebase is an **Eclipse PDE plug-in project**; there is no Maven/Gradle build.
-All Java code is generated or managed by EMF tooling.
+The codebase includes **Eclipse PDE plug-in projects** (EMF-generated metamodel) and a
+**Maven standalone build** for the transformation runner (`aas-metamodel/`, `transformation/`).
+EMF plugin Java code is generated and managed by EMF tooling; the Java runner in
+`transformation/src/main/java/` is hand-authored.
 
 ---
 
@@ -20,7 +22,21 @@ All Java code is generated or managed by EMF tooling.
 aas/               EMF metamodel — contains aas.ecore and generated Java sources
 aas.edit/          EMF-generated edit plugin (item providers)
 aas.editor/        EMF-generated tree editor plugin
-docs/              Architecture decision records (ADRs) and design notes
+aas-metamodel/     Maven module — standalone AAS metamodel JAR
+transformation/    Maven module — QVTo scripts + Java/EMF CLI runner
+  sysml2aas.qvto       QVTo entry point (namespace 20250201)
+  mappings/            QVTo mapping rules (structural, behavioral, relationships, comments)
+  lib/helpers.qvto     Shared navigation queries
+  src/main/java/       RunTransformation.java, SysML2AASTransformer.java
+examples/          Test suite (6/24; run-all.sh / run-all.ps1)
+lib/metamodels/    Vendored sysml.ecore (nsURI 20250201)
+docs/              Architecture docs, mapping tables, design decisions
+  DESIGN-AND-PLAN.md   D-001…D-007 (append only, never delete)
+  mapping-tables.md
+  architecture.md
+  how-to-extend.md
+.github/workflows/ CI/CD (GitHub Actions)
+pom.xml            Root Maven POM (modules: aas-metamodel, transformation)
 task-briefs/       Engineering-process documents (gitignored, not for commits)
 CLAUDE.md          This file
 README.md          Public-facing project description
@@ -57,7 +73,7 @@ LICENSE            EPL v2
 | `aas.edit/` | EMF-generated edit plugin |
 | `aas.editor/` | EMF-generated tree editor plugin |
 | `LICENSE` | Already correct (EPL v2) |
-| Any `.java` file | All Java is EMF-generated; changes will be overwritten |
+| `aas/**/*.java`, `aas.edit/**/*.java`, `aas.editor/**/*.java` | EMF-generated; changes will be overwritten on regeneration |
 
 ---
 
