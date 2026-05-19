@@ -277,3 +277,60 @@ It will be copied as-is when this repo merges into `jku-win-se/SysMLv2-AAS-integ
   (to be updated to `SysMLv2-AAS-integration` URL after migration).
 - Current CI result: `PASS=1 SKIP=5 FAIL=0` — vehicle PASS, 01-05 SKIP (no XMI).
   Coverage improves as XMI files are added to `examples/NN-slug/input/`.
+
+---
+
+## D-006 — Technical documentation structure (mapping tables, architecture, extension guide)
+
+**Date:** 2026-05-19
+**Status:** Accepted
+**Authors:** Berardinelli (TB-06)
+
+### Context
+
+The transformation implementation (TB-03-fix) and CI (TB-05) are complete, but the
+repository contained no developer-facing documentation that would allow a researcher
+external to the JSS 2026 paper to understand, reproduce, or extend the transformation.
+The JSS 2026 paper (Ferko et al.) contains Tables 1–3 (mapping rules) and Fig. 1
+(architecture), but these are embedded in the paper and not navigable from code.
+
+### Decision
+
+Create four documentation files under `docs/`, all in English, all migratable to
+`jku-win-se/SysMLv2-AAS-integration` as-is (with the exception of `DESIGN-AND-PLAN.md`
+which is internal):
+
+1. **`docs/mapping-tables.md`** — three Markdown tables (Structural / Behavioral /
+   Relationships), each row cross-referenced to the implementing QVTo function name.
+   Paraphrases the paper tables; does not copy verbatim.
+
+2. **`docs/architecture.md`** — prose description of the three layers (Input → QVTo →
+   Java/EMF) with an embedded pre-rendered PNG.
+
+3. **`docs/architecture.puml`** — PlantUML source for the architecture diagram, stored
+   alongside the rendered PNG so the diagram can be regenerated without pre-rendered images.
+
+4. **`docs/architecture.png`** — pre-rendered via Kroki (`localhost:8084/plantuml/png`),
+   displayed on GitHub without requiring any tooling from the viewer.
+
+5. **`docs/how-to-extend.md`** — step-by-step guide for adding a new mapping rule,
+   using `structural.qvto` as the exemplar and documenting the standard
+   `substringBefore`/`substringAfter` qualifier extraction pattern.
+
+### Rationale
+
+| Criterion | Doc-in-paper only | Docs in repo (chosen) |
+|-----------|------------------|-----------------------|
+| Navigable from code | ✗ | ✓ (cross-links to .qvto files) |
+| Survives migration to target repo | ✗ (paper is external) | ✓ |
+| Onboards new contributors | ✗ | ✓ (how-to-extend.md) |
+| Reproducible diagram | ✗ | ✓ (puml source + pre-rendered png) |
+
+### Consequences
+
+- `docs/mapping-tables.md` must be updated whenever a QVTo function is renamed or a
+  new mapping rule is added (see `docs/how-to-extend.md` checklist).
+- `docs/architecture.png` must be re-rendered (via Kroki) whenever `architecture.puml`
+  changes; the render command is documented in `docs/architecture.md`.
+- `docs/DESIGN-AND-PLAN.md` is NOT migrated to `SysMLv2-AAS-integration`; it is
+  internal engineering process documentation for this working repository.

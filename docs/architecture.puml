@@ -1,0 +1,78 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam backgroundColor #FFFFFF
+skinparam ArrowColor #333333
+skinparam component {
+  BackgroundColor #E8F4F8
+  BorderColor #2C7BB6
+  FontColor #1A1A1A
+}
+skinparam database {
+  BackgroundColor #FFF3CD
+  BorderColor #856404
+}
+skinparam rectangle {
+  BackgroundColor #F0F4F8
+  BorderColor #666666
+}
+
+title SysML v2 → AAS Transformation Architecture
+
+rectangle "Input Layer" {
+  [SysML v2 Model\n(.xmi)] as sysml_xmi
+  database "sysml.ecore\n(lib/metamodels/)" as sysml_mm
+}
+
+rectangle "Transformation Layer" {
+  [sysml2aas.qvto\n(entry point)] as entry
+  [mappings/structural.qvto] as structural
+  [mappings/behavioral.qvto] as behavioral
+  [mappings/relationships.qvto] as relationships
+  [mappings/comments.qvto] as comments
+  [lib/helpers.qvto] as helpers
+}
+
+rectangle "Execution Layer" {
+  [SysML2AASTransformer.java\n(Java/EMF runner)] as java_runner
+  [transformation-*.jar\n(fat JAR)] as fat_jar
+}
+
+rectangle "Output Layer" {
+  [AAS Model\n(.aas / .xmi)] as aas_xmi
+  database "aas.ecore\n(aas/model/)" as aas_mm
+}
+
+sysml_xmi --> entry : "input model"
+sysml_mm ..> entry : "conformsTo"
+sysml_mm ..> java_runner : "--sysml-mm"
+
+entry --> structural : imports
+entry --> behavioral : imports
+entry --> relationships : imports
+entry --> comments : imports
+structural --> helpers : imports
+behavioral --> helpers : imports
+relationships --> helpers : imports
+comments --> helpers : imports
+
+java_runner --> fat_jar : packages into
+fat_jar --> aas_xmi : "produces"
+
+entry ..> java_runner : "same rules\n(dual-layer)"
+
+aas_mm ..> entry : "conformsTo"
+aas_mm ..> java_runner : "--aas-mm"
+aas_xmi --> aas_mm : "conforms to"
+
+note right of entry
+  QVTo: authoritative spec
+  Eclipse M2M QVTo runtime
+  (academic reproducibility)
+end note
+
+note right of java_runner
+  Java/EMF: standalone CLI
+  No OSGi required
+  (CI & headless execution)
+end note
+@enduml
